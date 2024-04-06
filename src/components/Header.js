@@ -3,35 +3,30 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import { makeStyles } from '@mui/styles';
-import { ThemeProvider, createTheme } from '@mui/material';
+import styled from '@emotion/styled';
 
-const theme = createTheme(); 
 
-const useStyles = makeStyles((theme) => ({
-    appBar: {
-        borderBottom: `1px solid black`
-    }
-}));
+const StyledAppBar = styled(AppBar)({
+    borderBottom: `1px solid black`
+});
 
 
 function Header() {
-    const classes = useStyles();
     return (
-        <ThemeProvider theme={theme}>
+        <React.Fragment>
             <CssBaseline />
-            <AppBar 
+            <StyledAppBar 
             position="static"
             color='primary'
             elevation={0}
-            className={classes.appBar}
             />
             <Toolbar>
                 <Typography variant='h6' color='inherit' noWrap>
                     BlogmeUp
                 </Typography>
             </Toolbar>
-        </ThemeProvider>
+        </React.Fragment>
+        
     )
 }
 
