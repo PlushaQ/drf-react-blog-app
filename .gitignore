@@ -174,11 +174,12 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 
-
+# frontend gitignore
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+drf_react_front/node_modules/
 /node_modules
 /.pnp
 .pnp.js
