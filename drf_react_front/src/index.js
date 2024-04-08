@@ -4,7 +4,6 @@ import './index.css';
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 
-import App from './App'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -16,7 +15,7 @@ const routing = (
         <ThemeProvider theme={theme}>
             <Header />
             <Routes>
-                <Route exact path="/" element={<App />} />
+               {/*  <Route exact path="/" element={<ConnectionExample />} /> */}
             </Routes>
             <Footer />
         </ThemeProvider>
