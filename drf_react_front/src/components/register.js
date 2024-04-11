@@ -1,46 +1,46 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //MaterialUI
-import Avatar from '@mui/material'
-import Button from '@mui/material';
-import CssBaseline from '@mui/material';
-import TextField from '@mui/material';
-import FormControlLabel from '@mui/material';
-import Checkbox from '@mui/material';
-import Link from '@mui/material';
-import Grid from '@mui/material';
-import Typography from '@mui/material';
+import { Avatar } from '@mui/material';
+import { Button } from '@mui/material';
+import { CssBaseline } from '@mui/material';
+import { TextField } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
+import { Checkbox } from '@mui/material';
+import { Link } from '@mui/material';
+import { Grid } from '@mui/material';
+import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
-import Container from '@mui/material';
+import { Container } from '@mui/material';
 
 
 
-const styledPaper = styled('div')(({theme}) => ({
+const StyledPaper = styled('div')(({theme}) => ({
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
 }));
 
-const styledAvatar = styled(Avatar)(({theme}) => ({
+const StyledAvatar = styled(Avatar)(({theme}) => ({
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
 }));
 
-const styledForm = styled('form')(({theme}) => ({
+const StyledForm = styled('form')(({theme}) => ({
         width: '100%',
         marginTop: theme.spacing(3),
 }));
 
-const styledSubmit = styled('submit')(({theme}) => ({
+const StyledButton = styled(Button)(({theme}) => ({
             margin: theme.spacing(3, 0, 2),
 }));
 
 
 
 export default function SignUp() {
-	const history = useHistory();
+	const history = useNavigate();
 	const initialFormData = Object.freeze({
 		email: '',
 		username: '',
@@ -62,7 +62,7 @@ export default function SignUp() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`user/create/`, {
+			.post(`user/register/`, {
 				email: formData.email,
 				user_name: formData.username,
 				password: formData.password,
@@ -78,12 +78,12 @@ export default function SignUp() {
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
-			<styledPaper>
-				<styledAvatar></styledAvatar>
+			<StyledPaper>
+				<StyledAvatar></StyledAvatar>
 				<Typography component="h1" variant="h5">
 					Sign up
 				</Typography>
-				<styledForm noValidate>
+				<StyledForm noValidate>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
 							<TextField
@@ -129,8 +129,7 @@ export default function SignUp() {
 							/>
 						</Grid>
 					</Grid>
-                    <styledSubmit>
-                        <Button
+                        <StyledButton
                             type="submit"
                             fullWidth
                             variant="contained"
@@ -138,8 +137,7 @@ export default function SignUp() {
                             onClick={handleSubmit}
                         >
                             Sign Up
-                        </Button>
-                    </styledSubmit>
+                        </StyledButton>
 					<Grid container justify="flex-end">
 						<Grid item>
 							<Link href="#" variant="body2">
@@ -147,8 +145,9 @@ export default function SignUp() {
 							</Link>
 						</Grid>
 					</Grid>
-				</styledForm>
-			</styledPaper>
+				</StyledForm>
+			</StyledPaper>
 		</Container>
 	);
 }
+
