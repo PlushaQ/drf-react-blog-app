@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import App from './App'
 import Header from './components/header'
 import Footer from './components/footer'
-import SignUp from './components/register'
+import Register from './components/register'
 import Login from './components/login'
 
 const theme = createTheme(); 
@@ -19,8 +19,9 @@ const routing = (
             <Header />
             <Routes>
                 <Route exact path="/" element={<App />} />
-                <Route exact path="/register" element={<SignUp />}/>
+                <Route exact path="/register" element={<Register />}/>
                 <Route exact path="/login" element={<Login />} />
+{/*                 <Route exact path="/logout" element={<Logout />} /> */}
             </Routes>
             <Footer />
         </ThemeProvider>
