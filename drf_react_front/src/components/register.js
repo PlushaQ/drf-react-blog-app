@@ -40,7 +40,7 @@ const StyledButton = styled(Button)(({theme}) => ({
 
 
 export default function SignUp() {
-	const history = useNavigate();
+	const navigate = useNavigate();
 	const initialFormData = Object.freeze({
 		email: '',
 		username: '',
@@ -68,7 +68,7 @@ export default function SignUp() {
 				password: formData.password,
 			})
 			.then((res) => {
-				history.push('/login');
+				navigate('/login');
 				console.log(res);
 				console.log(res.data);
 			});

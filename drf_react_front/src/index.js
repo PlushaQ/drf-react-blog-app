@@ -8,6 +8,7 @@ import App from './App'
 import Header from './components/header'
 import Footer from './components/footer'
 import SignUp from './components/register'
+import Login from './components/login'
 
 const theme = createTheme(); 
 
@@ -19,6 +20,7 @@ const routing = (
             <Routes>
                 <Route exact path="/" element={<App />} />
                 <Route exact path="/register" element={<SignUp />}/>
+                <Route exact path="/login" element={<Login />} />
             </Routes>
             <Footer />
         </ThemeProvider>
