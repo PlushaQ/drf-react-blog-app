@@ -1,5 +1,5 @@
 from rest_framework import generics, viewsets
-from rest_framework.permissions import BasePermission, IsAuthenticatedOrReadOnly, IsAuthenticated, DjangoModelPermissionsOrAnonReadOnly, SAFE_METHODS
+from rest_framework.permissions import BasePermission, IsAuthenticatedOrReadOnly, SAFE_METHODS
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
@@ -19,7 +19,7 @@ class PostUserWritePermission(BasePermission):
 
 
 class PostList(viewsets.ModelViewSet):
-    permission_classes = [PostUserWritePermission]
+    permission_classes = [PostUserWritePermission, IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
     
     def get_object(self, queryset=None, **kwargs):
