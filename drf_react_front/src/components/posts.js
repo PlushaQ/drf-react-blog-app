@@ -6,6 +6,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import styled from '@emotion/styled';
+import { Link } from '@mui/material';
+
+
 
 // Define styled components
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -26,13 +29,19 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   textAlign: 'left',
 }));
 
-const StyledPostText = styled.div(({ theme }) => ({
+const StyledPostText = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'left',
   alignItems: 'baseline',
   fontSize: '12px',
   textAlign: 'left',
 }));
+
+const StyledLink = styled(Link)(({theme}) => (
+  {
+    margin: theme.spacing(1, 1.5),
+  }
+))
 
 
 const Posts = (props) => {
@@ -47,10 +56,15 @@ const Posts = (props) => {
           {posts.map((post) => (
             <Grid item key={post.id} xs={12} md={4}>
               <StyledCard>
+                <StyledLink
+                  color='textPrimary'
+                  href={'post/' + post.slug}
+                  >
                 <StyledCardMedia
                   image="https://source.unsplash.com/random"
                   title="Image title"
                 />
+                </StyledLink>
                 <StyledCardContent>
                   <StyledTypography gutterBottom variant="h6" component="h2">
                     {post.title.substr(0, 50)}...

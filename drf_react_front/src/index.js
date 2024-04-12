@@ -10,6 +10,8 @@ import Footer from './components/footer'
 import Register from './components/register'
 import Login from './components/login'
 import Logout from './components/logout'
+import SinglePost from './components/singlePost'
+
 
 const theme = createTheme(); 
 
@@ -20,9 +22,10 @@ const routing = (
             <Header />
             <Routes>
                 <Route exact path="/" element={<App />} />
-                <Route exact path="/register" element={<Register />}/>
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/logout" element={<Logout />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/post/:slug" element={<SinglePost />}/>
             </Routes>
             <Footer />
         </ThemeProvider>
