@@ -47,12 +47,17 @@ const StyledLink = styled(Link)(({theme}) => (
 const Posts = (props) => {
   const { posts } = props;
 
+  if (posts && posts.detail === "Authentication credentials were not provided.") {
+    return <p>Please log in to view posts.</p>;
+  }
+
   if (!posts || posts.length === 0) return <p>Can not find any posts, sorry</p>;
 
   return (
     <React.Fragment>
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
+
           {posts.map((post) => (
             <Grid item key={post.id} xs={12} md={4}>
               <StyledCard>

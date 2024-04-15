@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
 import styled from '@emotion/styled';
 import { Link } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import SearchBar from '@mkyy/mui-search-bar'
+import Search from './search';
+
 
 
 const StyledAppBar = styled(AppBar)({
@@ -25,8 +28,22 @@ const StyledTitle = styled(Typography)({
     flexGrow: 1,
 });
 
+const StyledSearchBar = styled(SearchBar)({
+    border: '1px solid #ccc'
+})
+
 
 function Header() {
+
+    const navigate = useNavigate()
+    const [data, setData] = useState({search: ""})
+
+    const goSearch = (e) => {
+        navigate({pathname: '/search/',
+        search: '?search=' + data.search
+    });
+    }
+
     return (
         <React.Fragment>
             <CssBaseline />
@@ -46,6 +63,11 @@ function Header() {
                             Blog
                     </StyledLink>
                 </StyledTitle>
+                <StyledSearchBar
+                    value={data.search}
+                    onChange={(newValue) => setData({search: newValue})}
+                    onRequestSearch={() => goSearch(data.search)}
+                    />
                 <nav>
                     <StyledLink 
                         component={NavLink}

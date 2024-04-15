@@ -7,8 +7,7 @@ app_name = 'blog_api'
 router = DefaultRouter()
 router.register('', PostList, basename='post')
 
-urlpatterns = [
+urlpatters = [
     path('search/custom/', PostListDetailFilter.as_view(), name='postsearch')
 ]
-
 urlpatterns += router.urls
