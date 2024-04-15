@@ -11,7 +11,7 @@ import Register from './components/register'
 import Login from './components/login'
 import Logout from './components/logout'
 import SinglePost from './components/singlePost'
-
+import Search from './components/search';
 
 const theme = createTheme(); 
 
@@ -26,6 +26,7 @@ const routing = (
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/post/:slug" element={<SinglePost />}/>
+                <Route path="/search" element={<Search />} />
             </Routes>
             <Footer />
         </ThemeProvider>

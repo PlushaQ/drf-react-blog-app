@@ -10,7 +10,6 @@ import { Grid } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Container} from '@mui/material';
 import { Link } from '@mui/material';
-import { useLocation } from 'react-router-dom';
 
 const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
     paddingTop: '56.25%', // 16:9
@@ -20,9 +19,9 @@ const StyledLink = styled(Link)(({ theme }) => ({
     margin: theme.spacing(1, 1.5),
   }));
   
-const StyledCardHeader = styled.div(({ theme }) => ({
-    backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
-  }));
+// const StyledCardHeader = styled.div(({ theme }) => ({
+//     backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+//   }));
   
 const StyledPostTitle = styled(Typography)({
     fontSize: '16px',
@@ -47,8 +46,7 @@ const Search = () => {
 	});
 
 	useEffect(() => {
-		axiosInstance.get(search + '/' + window.location.search)
-        .then((res) => {
+		axiosInstance.get(search + '/' + window.location.search).then((res) => {
 			const allPosts = res.data;
 			setAppState({ posts: allPosts });
 			console.log(res.data);

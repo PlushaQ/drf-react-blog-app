@@ -8,7 +8,7 @@ import { Link } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import SearchBar from '@mkyy/mui-search-bar'
-import Search from './search';
+
 
 
 
@@ -28,9 +28,7 @@ const StyledTitle = styled(Typography)({
     flexGrow: 1,
 });
 
-const StyledSearchBar = styled(SearchBar)({
-    border: '1px solid #ccc'
-})
+
 
 
 function Header() {
@@ -38,11 +36,10 @@ function Header() {
     const navigate = useNavigate()
     const [data, setData] = useState({search: ""})
 
-    const goSearch = (e) => {
-        navigate({pathname: '/search/',
-        search: '?search=' + data.search
-    });
-    }
+    const goSearch = () => {
+        navigate(`/search?search=${data.search}`);
+        window.location.reload()
+    };
 
     return (
         <React.Fragment>
@@ -63,11 +60,11 @@ function Header() {
                             Blog
                     </StyledLink>
                 </StyledTitle>
-                <StyledSearchBar
-                    value={data.search}
-                    onChange={(newValue) => setData({search: newValue})}
-                    onRequestSearch={() => goSearch(data.search)}
-                    />
+                <SearchBar
+						value={data.search}
+						onChange={(newValue) => setData({ search: newValue })}
+                        onSearch={() => goSearch(data.search)}
+					/>
                 <nav>
                     <StyledLink 
                         component={NavLink}
