@@ -7,11 +7,11 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import App from './App'
 import Header from './components/header'
 import Footer from './components/footer'
-import Register from './components/register'
-import Login from './components/login'
-import Logout from './components/logout'
-import SinglePost from './components/singlePost'
-import Search from './components/search';
+import Register from './components/auth/register'
+import Login from './components/auth/login'
+import Logout from './components/auth/logout'
+import SinglePost from './components/posts/singlePost'
+import Search from './components/posts/search';
 
 const theme = createTheme(); 
 
