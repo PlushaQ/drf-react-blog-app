@@ -35,3 +35,28 @@ class PostListDetailFilter(generics.ListAPIView):
     serializer_class = PostSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['^slug']
+
+
+# Post Admin
+
+class CreatePost(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class AdminPostDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class EditPost(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class DeletePost(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
