@@ -9,6 +9,7 @@ export default function Logout() {
 		const response = axiosInstance.post('user/logout/blacklist/', {
 			refresh_token: localStorage.getItem('refresh_token'),
 		});
+		console.log(response)
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('refresh_token');
 		axiosInstance.defaults.headers['Authorization'] = null;
