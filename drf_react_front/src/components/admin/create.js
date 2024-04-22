@@ -63,37 +63,48 @@ export default function Create() {
     content: '',
   });
 
-  const [formData, updateFormData] = useState(initialFormData);
+  const [postData, updateFormData] = useState(initialFormData);
+  const [postImage, setPostImage] = useState(null);
 
   const handleChange = (e) => {
+    if (e.target.name == 'image')
+    {
+      setPostImage({
+        image: e.target.files,
+      });
+      console.log(e.target.files)
+    }
     if (e.target.name === 'title') {
       updateFormData({
-        ...formData,
+        ...postData,
         [e.target.name]: e.target.value.trim(),
         slug: slugify(e.target.value.trim()),
       });
     } else {
       updateFormData({
-        ...formData,
+        ...postData,
         [e.target.name]: e.target.value.trim(),
       });
     }
   };
 
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
-    axiosInstance
-      .post(`admin/create/`, {
-        title: formData.title,
-        slug: formData.slug,
-        author: 1,
-        excerpt: formData.excerpt,
-        content: formData.content,
-      })
-      .then((res) => {
-        navigate('/admin/');
-      });
-  };
+		e.preventDefault();
+		let formData = new FormData();
+		formData.append('title', postData.title);
+		formData.append('slug', postData.slug);
+		formData.append('author', 1);
+		formData.append('excerpt', postData.excerpt);
+		formData.append('content', postData.content);
+		formData.append('image', postImage.image[0]);
+		axiosInstance.post(`admin/create/`, formData, {
+      headers: {
+      'Content-Type': 'multipart/form-data',
+    }});
+		navigate('/admin/');
+    window.location.reload()
+	};
 
   return (
     <Container component="main" maxWidth="xs">
@@ -140,7 +151,7 @@ export default function Create() {
                 label="Slug"
                 name="slug"
                 autoComplete="slug"
-                value={formData.slug}
+                value={postData.slug}
                 onChange={handleChange}
               />
             </Grid>
@@ -158,6 +169,16 @@ export default function Create() {
                 rows={4}
               />
             </Grid>
+            <Grid item xs={12}>
+              <input
+                accept='image/*'
+                className='input'
+                id='post-image'
+                onChange={handleChange}
+                name='image'
+                type='file' />
+            </Grid>
+
           </Grid>
           <SubmitButton
             type="submit"

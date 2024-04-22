@@ -66,7 +66,7 @@ const Posts = (props) => {
                   href={'post/' + post.slug}
                   >
                 <StyledCardMedia
-                  image="https://source.unsplash.com/random"
+                  image={post.image}
                   title="Image title"
                 />
                 </StyledLink>
